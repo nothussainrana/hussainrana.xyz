@@ -192,9 +192,15 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left border border-white/20">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div className="flex items-center">
-                  {/* Company Icon Placeholder */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-800 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <span className="text-xl text-white font-bold">LT</span>
+                  {/* Company Icon */}
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
+                    <Image 
+                      src="/luxtag.png.webp" 
+                      alt="LuxTag Logo" 
+                      width={32} 
+                      height={32} 
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Software Engineer</h3>
@@ -222,9 +228,15 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-200 border border-white/15">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div className="flex items-center">
-                  {/* Company Icon Placeholder */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <span className="text-xl text-white font-bold">HI</span>
+                  {/* Company Icon */}
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
+                    <Image 
+                      src="/horestco.png" 
+                      alt="Horestco Logo" 
+                      width={32} 
+                      height={32} 
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Fullstack Developer</h3>
@@ -251,9 +263,15 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left animate-delay-400 border border-white/15">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div className="flex items-center">
-                  {/* Company Icon Placeholder */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <span className="text-xl text-white font-bold">APU</span>
+                  {/* Company Icon */}
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-1">
+                    <Image 
+                      src="/apu.jpeg" 
+                      alt="Asia Pacific University Logo" 
+                      width={40} 
+                      height={40} 
+                      className="object-contain rounded-lg"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Technical Assistant</h3>
@@ -280,7 +298,7 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-500 border border-white/15">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div className="flex items-center">
-                  {/* Company Icon Placeholder */}
+                  {/* Company Icon Placeholder for Upwork */}
                   <div className="w-12 h-12 bg-gradient-to-r from-gray-300 to-gray-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                     <span className="text-xl text-black font-bold">UW</span>
                   </div>
@@ -321,9 +339,15 @@ export default function Home() {
             {/* Morpheus.asia */}
             <div className="glass p-6 rounded-2xl hover-lift animate-scale-in border border-white/15 group">
               <div className="flex items-center mb-4">
-                {/* Project Icon Placeholder */}
-                <div className="w-12 h-12 bg-gradient-to-r from-gray-600 to-gray-800 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl text-white font-bold">M</span>
+                {/* Project Icon */}
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-2">
+                  <Image 
+                    src="/mor-asia-logo-2.png" 
+                    alt="Morpheus.asia Logo" 
+                    width={32} 
+                    height={32} 
+                    className="object-contain"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-1">Morpheus.asia</h3>
@@ -353,9 +377,15 @@ export default function Home() {
             {/* Dashtly */}
             <div className="glass p-6 rounded-2xl hover-lift animate-scale-in animate-delay-200 border border-white/15 group">
               <div className="flex items-center mb-4">
-                {/* Project Icon Placeholder */}
-                <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-700 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl text-white font-bold">D</span>
+                {/* Project Icon */}
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-1">
+                  <Image 
+                    src="/dashtly.jpg" 
+                    alt="Dashtly Logo" 
+                    width={40} 
+                    height={40} 
+                    className="object-contain rounded-lg"
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-1">Dashtly</h3>
@@ -388,7 +418,7 @@ export default function Home() {
             {/* phpSite */}
             <div className="glass p-6 rounded-2xl hover-lift animate-scale-in animate-delay-400 border border-white/15 group">
               <div className="flex items-center mb-4">
-                {/* Project Icon Placeholder */}
+                {/* Project Icon Placeholder - No logo available */}
                 <div className="w-12 h-12 bg-gradient-to-r from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                   <span className="text-xl text-white font-bold">P</span>
                 </div>
