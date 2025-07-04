@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-gray-900 relative overflow-x-hidden">
       {/* Animated Background Particles */}
       <div className="particles fixed inset-0 z-0">
         <div className="particle"></div>
@@ -38,12 +38,12 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section - Redesigned to be more compact */}
+      {/* Hero Section - Redesigned with better layout */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8 items-center min-h-[70vh]">
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
             {/* Left Side - Text Content */}
-            <div className="lg:col-span-2 animate-slide-in-left">
+            <div className="animate-slide-in-left">
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 animate-slide-in-bottom animate-delay-200">
                 <span className="gradient-text">Hussain Rana</span>
               </h1>
@@ -58,7 +58,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-bottom animate-delay-1000">
                 <a 
                   href="#contact" 
-                  className="group relative bg-gradient-to-r from-gray-200 to-white hover:from-gray-100 hover:to-gray-200 text-black px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-glow-dark"
+                  className="group relative bg-gradient-to-r from-white to-white hover:from-gray-100 hover:to-gray-100 text-black px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-glow-dark"
                 >
                   <span className="relative z-10">Get In Touch</span>
                 </a>
@@ -71,18 +71,24 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Side - Avatar and Quick Stats */}
+            {/* Right Side - Profile Picture and Stats */}
             <div className="animate-slide-in-right">
-              <div className="text-center lg:text-left">
-                <div className="mb-8 animate-scale-in">
-                  <div className="w-32 h-32 mx-auto lg:mx-0 bg-gradient-to-br from-gray-200 via-gray-400 to-gray-600 rounded-full flex items-center justify-center mb-6 shadow-2xl animate-glow hover-lift relative">
-                    <span className="text-4xl font-bold text-black z-10">HR</span>
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-300 via-gray-500 to-gray-700 rounded-full animate-pulse-slow opacity-50"></div>
+              <div className="flex flex-col items-center lg:items-end space-y-8">
+                {/* Profile Picture */}
+                <div className="animate-scale-in">
+                  <div className="w-48 h-48 rounded-full overflow-hidden shadow-2xl animate-glow hover-lift border-4 border-white/20">
+                    <Image 
+                      src="/Me1.jpg" 
+                      alt="Hussain Rana Profile Picture" 
+                      width={192} 
+                      height={192} 
+                      className="object-cover w-full h-full"
+                    />
                   </div>
                 </div>
                 
                 {/* Quick Stats */}
-                <div className="glass p-6 rounded-2xl hover-lift border border-white/10">
+                <div className="glass p-6 rounded-2xl hover-lift border border-white/10 w-full max-w-sm">
                   <h4 className="font-bold text-white mb-4 text-lg">At a Glance</h4>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -140,7 +146,18 @@ export default function Home() {
             <div className="glass p-6 rounded-xl hover-lift border border-white/10 animate-slide-in-up">
               <h4 className="font-bold text-white mb-3 text-lg">🎓 Education</h4>
               <p className="text-gray-300 text-sm mb-2">Diploma in Software Engineering</p>
-              <p className="text-gray-400 text-sm mb-2">Asia Pacific University</p>
+              <div className="flex items-center mb-2">
+                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center mr-2 flex-shrink-0 p-1">
+                  <Image 
+                    src="/apu.jpeg" 
+                    alt="Asia Pacific University Logo" 
+                    width={20} 
+                    height={20} 
+                    className="object-contain rounded"
+                  />
+                </div>
+                <p className="text-gray-400 text-sm">Asia Pacific University</p>
+              </div>
               <p className="text-white text-sm font-semibold">GPA: 3.41/4.00</p>
             </div>
 
@@ -157,19 +174,19 @@ export default function Home() {
               <h4 className="font-bold text-white mb-3 text-lg">⚡ Experience</h4>
               <div className="space-y-2">
                 <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mr-3 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                   <span className="text-gray-300 text-sm">3+ years professional</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mr-3 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                   <span className="text-gray-300 text-sm">Startup experience</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mr-3 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                   <span className="text-gray-300 text-sm">Full-stack expertise</span>
                 </div>
                 <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mr-3 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                   <span className="text-gray-300 text-sm">DevOps & CI/CD</span>
                 </div>
               </div>
@@ -208,17 +225,17 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="text-gray-300 mt-2 md:mt-0">
-                  <span className="bg-gradient-to-r from-gray-200 to-white text-black px-3 py-1 rounded-full text-xs mr-2 font-semibold">Current</span>
+                  <span className="bg-gradient-to-r from-white to-white text-black px-3 py-1 rounded-full text-xs mr-2 font-semibold">Current</span>
                   <span className="text-gray-400 text-sm">March 2025 – Present • Remote</span>
                 </div>
               </div>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Created and maintained API documentation, improving developer onboarding and speed
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Built and optimized frontend interfaces and backend APIs, improving overall product performance and user experience
                 </li>
               </ul>
@@ -249,11 +266,11 @@ export default function Home() {
               </div>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-500 to-gray-300 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Managed servers using CLI (MySQL, Apache, SSH) and built CI/CD pipelines, reducing deployment time and manual errors
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-500 to-gray-300 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Automated routine tasks, integrated analytics tools, and performed SEO research, leading to better visibility and streamlined workflows
                 </li>
               </ul>
@@ -284,11 +301,11 @@ export default function Home() {
               </div>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Updated and deployed software across hundreds of systems via Microsoft Active Directory, ensuring consistency and security
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-600 to-gray-400 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Standardized hardware configurations, resulting in a uniform and reliable user experience across the university
                 </li>
               </ul>
@@ -298,9 +315,15 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-500 border border-white/15">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                 <div className="flex items-center">
-                  {/* Company Icon Placeholder for Upwork */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-gray-300 to-gray-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                    <span className="text-xl text-black font-bold">UW</span>
+                  {/* Company Icon */}
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
+                    <Image 
+                      src="/upwork-logo.svg" 
+                      alt="Upwork Logo" 
+                      width={32} 
+                      height={32} 
+                      className="object-contain"
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Freelance Fullstack Developer</h3>
@@ -313,11 +336,11 @@ export default function Home() {
               </div>
               <ul className="space-y-2 text-gray-300 text-sm">
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Built fullstack apps, Discord bots, web scraping tools, and handled website migrations
                 </li>
                 <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
+                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
                   Delivered MVPs and integrated payment systems for solo clients and small businesses
                 </li>
               </ul>
@@ -368,9 +391,9 @@ export default function Home() {
                 Collaborated in a dev team using <span className="text-gray-100 font-semibold">Git, PRs, and code reviews</span> to ship features fast and cleanly.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-gray-700 to-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
-                <span className="bg-gradient-to-r from-gray-600 to-gray-500 text-white px-2 py-1 rounded-full text-xs font-semibold">React</span>
-                <span className="bg-gradient-to-r from-gray-500 to-gray-400 text-white px-2 py-1 rounded-full text-xs font-semibold">TypeScript</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">React</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">TypeScript</span>
               </div>
             </div>
 
@@ -408,10 +431,10 @@ export default function Home() {
                 DB management, and UX for the Tajik market.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-gray-700 to-gray-600 text-white px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
-                <span className="bg-gradient-to-r from-gray-600 to-gray-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Prisma</span>
-                <span className="bg-gradient-to-r from-gray-500 to-gray-400 text-white px-2 py-1 rounded-full text-xs font-semibold">PostgreSQL</span>
-                <span className="bg-gradient-to-r from-gray-400 to-gray-300 text-black px-2 py-1 rounded-full text-xs font-semibold">DigitalOcean</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Prisma</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">PostgreSQL</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">DigitalOcean</span>
               </div>
             </div>
 
@@ -419,8 +442,8 @@ export default function Home() {
             <div className="glass p-6 rounded-2xl hover-lift animate-scale-in animate-delay-400 border border-white/15 group">
               <div className="flex items-center mb-4">
                 {/* Project Icon Placeholder - No logo available */}
-                <div className="w-12 h-12 bg-gradient-to-r from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl text-white font-bold">P</span>
+                <div className="w-12 h-12 bg-gradient-to-r from-white to-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-xl text-black font-bold">P</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-1">phpSite</h3>
@@ -436,9 +459,9 @@ export default function Home() {
                 middleware and simple ORM, leveling up backend fundamentals.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-gray-600 to-gray-500 text-white px-2 py-1 rounded-full text-xs font-semibold">PHP</span>
-                <span className="bg-gradient-to-r from-gray-500 to-gray-400 text-white px-2 py-1 rounded-full text-xs font-semibold">MVC</span>
-                <span className="bg-gradient-to-r from-gray-400 to-gray-300 text-black px-2 py-1 rounded-full text-xs font-semibold">Custom Framework</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">PHP</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">MVC</span>
+                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Custom Framework</span>
               </div>
             </div>
           </div>
@@ -464,7 +487,7 @@ export default function Home() {
               <div className="space-y-3">
                 {['JavaScript', 'TypeScript', 'Python', 'PHP', 'HTML', 'CSS', 'Bash', 'SQL'].map((skill, index) => (
                   <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-white to-gray-400 rounded-full mr-3 animate-pulse-slow"></span>
+                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                     <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
                   </div>
                 ))}
@@ -480,7 +503,7 @@ export default function Home() {
               <div className="space-y-3">
                 {['Node.js', 'Express', 'React', 'Next.js', 'Tailwind CSS', 'MedusaJS', 'Laravel', 'Ethers.js', 'Prisma ORM'].map((skill, index) => (
                   <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-gray-300 to-gray-500 rounded-full mr-3 animate-pulse-slow"></span>
+                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                     <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
                   </div>
                 ))}
@@ -496,7 +519,7 @@ export default function Home() {
               <div className="space-y-3">
                 {['MySQL', 'PostgreSQL', 'Redis', 'Docker', 'Linux', 'Nginx', 'Git', 'Puppeteer'].map((skill, index) => (
                   <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-600 rounded-full mr-3 animate-pulse-slow"></span>
+                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                     <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
                   </div>
                 ))}
@@ -512,7 +535,7 @@ export default function Home() {
               <div className="space-y-3">
                 {['DigitalOcean', 'AWS (EC2, S3)', 'Cloudflare', 'GitHub Actions', 'CI/CD', 'Vercel', 'Firebase', 'SMTP', 'Stripe'].map((skill, index) => (
                   <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-gray-500 to-gray-700 rounded-full mr-3 animate-pulse-slow"></span>
+                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
                     <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
                   </div>
                 ))}
@@ -583,7 +606,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="group flex items-center p-4 glass rounded-xl hover:scale-105 transition-all duration-300 hover-glow border border-white/10"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-r from-gray-200 to-white rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-gradient-to-r from-white to-white rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                       </svg>
@@ -599,7 +622,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="group flex items-center p-4 glass rounded-xl hover:scale-105 transition-all duration-300 hover-glow border border-white/10"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-r from-gray-800 to-black rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 bg-gradient-to-r from-black to-black rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
