@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* SF Pro Font */
+@font-face {
+  font-family: 'SF Pro';
+  src: url('/SF-Pro.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,15 +23,33 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  cursor: none; /* Hide default cursor for custom cursor */
+}
+
+/* Show default cursor on mobile devices */
+@media (max-width: 768px) {
+  body {
+    cursor: auto !important;
+  }
+}
+
+a, button, .cursor-hover {
+  cursor: none; /* Hide default cursor on interactive elements */
+}
+
+@media (max-width: 768px) {
+  a, button, .cursor-hover {
+    cursor: pointer !important;
+  }
 }
 
 /* Custom Animations */
@@ -81,6 +108,55 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+/* Static CSS Stars for Performance */
+.stars-small {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    1541px 478px #FFF, 54px 1766px #FFF, 1698px 1167px #FFF, 
+    742px 428px #FFF, 1261px 971px #FFF, 477px 1635px #FFF,
+    1822px 1257px #FFF, 1103px 1674px #FFF, 291px 1566px #FFF,
+    332px 727px #FFF, 1558px 1743px #FFF, 796px 666px #FFF,
+    1860px 333px #FFF, 1147px 1486px #FFF, 1824px 1128px #FFF,
+    904px 1229px #FFF, 495px 1403px #FFF, 1426px 552px #FFF,
+    1881px 1768px #FFF, 1670px 762px #FFF, 1995px 1788px #FFF,
+    1967px 1018px #FFF, 1803px 1469px #FFF, 1650px 1882px #FFF,
+    1278px 1594px #FFF, 1170px 1108px #FFF, 936px 208px #FFF,
+    1995px 1601px #FFF, 729px 1805px #FFF, 1078px 35px #FFF;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.stars-medium {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    779px 1331px #FFF, 324px 42px #FFF, 303px 1628px #FFF,
+    1654px 1155px #FFF, 1173px 1888px #FFF, 1787px 1414px #FFF,
+    84px 1488px #FFF, 1315px 1506px #FFF, 1068px 1223px #FFF,
+    1768px 1937px #FFF, 1529px 1927px #FFF, 1647px 959px #FFF,
+    1714px 1735px #FFF, 1689px 1988px #FFF, 1423px 701px #FFF,
+    1961px 1804px #FFF, 1524px 306px #FFF, 1268px 506px #FFF;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+.stars-large {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 
+    1223px 327px #FFF, 1840px 547px #FFF, 1183px 1014px #FFF,
+    883px 1473px #FFF, 1029px 893px #FFF, 1568px 512px #FFF,
+    1667px 1522px #FFF, 1810px 1218px #FFF, 1361px 1974px #FFF;
+  animation: twinkle 7s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 /* Animation Classes */
 .animate-float {
   animation: float 3s ease-in-out infinite;
@@ -126,17 +202,17 @@ body {
   animation: rotate 10s linear infinite;
 }
 
-/* Glassmorphism Effect */
+/* Glassmorphism Effect - Pure black with no borders */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
 }
 
 .glass-light {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: none;
 }
 
 /* Particle Effects */

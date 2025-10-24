@@ -1,82 +1,124 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import CustomCursor from "./components/CustomCursor";
+import GalaxyBackground from "./components/GalaxyBackground";
+import VantaBackground from "./components/VantaBackground";
+import ParticlesBackground from "./components/ParticlesBackground";
+import HeroTypewriter from "./components/HeroTypewriter";
+import MagneticButton from "./components/MagneticButton";
+import AnimatedCard from "./components/AnimatedCard";
+import AnimatedSection, { itemVariants } from "./components/AnimatedSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-950 to-gray-900 relative overflow-x-hidden">
-      {/* Animated Background Particles */}
-      <div className="particles fixed inset-0 z-0">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-      </div>
+    <div className="min-h-screen bg-black relative overflow-x-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
+      {/* Galaxy Starfield Background with Nebulas */}
+      <GalaxyBackground />
+      
+      {/* Vanta NET 3D Effect Layer */}
+      <VantaBackground />
+      
+      {/* Interactive Particles - Reduced for performance */}
+      <ParticlesBackground />
 
-      {/* Grid Pattern Overlay */}
-      <div className="fixed inset-0 grid-pattern opacity-20 z-0"></div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full glass backdrop-blur-md z-50 border-b border-white/10">
+      {/* Navigation with Framer Motion */}
+      <motion.nav 
+        className="fixed top-0 w-full glass backdrop-blur-md z-50"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="font-bold text-xl text-white animate-fade-in">
+            <motion.div 
+              className="font-bold text-xl text-white cursor-hover"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
               Hussain Rana
-            </div>
-            <div className="hidden md:flex space-x-8 animate-slide-in-top animate-delay-300">
-              <a href="#about" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">About</a>
-              <a href="#experience" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">Experience</a>
-              <a href="#projects" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">Projects</a>
-              <a href="#skills" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">Skills</a>
-              <a href="#contact" className="text-gray-300 hover:text-white transition-all duration-300 hover:scale-110">Contact</a>
+            </motion.div>
+            <div className="hidden md:flex space-x-8">
+              {['About', 'Experience', 'Projects', 'Skills', 'Contact'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-white hover:text-gray-200 transition-all duration-300 cursor-hover text-base font-medium"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index, duration: 0.5 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item}
+                </motion.a>
+              ))}
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Hero Section - Redesigned with better layout */}
+      {/* Hero Section - With TypeIt Effect */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
-            {/* Left Side - Text Content */}
-            <div className="animate-slide-in-left">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 animate-slide-in-bottom animate-delay-200">
-                <span className="gradient-text">Hussain Rana</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-6 animate-slide-in-bottom animate-delay-400">
-                Full-Stack Developer & Software Engineer
-              </p>
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed animate-fade-in animate-delay-700">
-                Crafting <span className="text-white font-semibold">digital experiences</span> with cutting-edge technologies. 
-                Specialized in building <span className="text-gray-200 font-semibold">scalable web applications</span> and 
-                <span className="text-gray-100 font-semibold"> robust backend systems</span>.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-bottom animate-delay-1000">
-                <a 
-                  href="#contact" 
-                  className="group relative bg-gradient-to-r from-white to-white hover:from-gray-100 hover:to-gray-100 text-black px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl animate-glow-dark"
+            {/* Left Side - Text Content with Typewriter */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <HeroTypewriter />
+              <motion.p 
+                className="text-xl text-white mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.5, duration: 0.6 }}
+              >
+                Crafting <span className="text-white font-bold">digital experiences</span> with cutting-edge technologies. 
+                Specialized in building <span className="text-white font-bold">scalable web applications</span> and 
+                <span className="text-white font-bold"> robust backend systems</span>.
+              </motion.p>
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 3, duration: 0.6 }}
+              >
+                <MagneticButton 
+                  href="#contact"
+                  className="group relative bg-white hover:bg-gray-100 text-black px-10 py-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-block text-center text-lg"
                 >
                   <span className="relative z-10">Get In Touch</span>
-                </a>
-                <a 
-                  href="#projects" 
-                  className="group glass text-white hover:bg-white/10 px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl border border-white/30 hover-glow"
+                </MagneticButton>
+                <MagneticButton 
+                  href="#projects"
+                  className="group glass text-white hover:bg-white/10 px-10 py-4 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-block text-center text-lg"
                 >
                   <span className="relative z-10">View My Work</span>
-                </a>
-              </div>
-            </div>
+                </MagneticButton>
+              </motion.div>
+            </motion.div>
 
             {/* Right Side - Profile Picture and Stats */}
-            <div className="animate-slide-in-right">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
               <div className="flex flex-col items-center lg:items-end space-y-8">
                 {/* Profile Picture */}
-                <div className="animate-scale-in">
-                  <div className="w-48 h-48 rounded-full overflow-hidden shadow-2xl animate-glow hover-lift border-4 border-white/20">
+                <motion.div
+                  whileHover={{ scale: 1.05, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-48 h-48 rounded-lg overflow-hidden shadow-2xl animate-glow hover-lift cursor-hover">
                     <Image 
                       src="/Me1.jpg" 
                       alt="Hussain Rana Profile Picture" 
@@ -85,559 +127,740 @@ export default function Home() {
                       className="object-cover w-full h-full"
                     />
                   </div>
-                </div>
+                </motion.div>
                 
                 {/* Quick Stats */}
-                <div className="glass p-6 rounded-2xl hover-lift border border-white/10 w-full max-w-sm">
-                  <h4 className="font-bold text-white mb-4 text-lg">At a Glance</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Experience</span>
-                      <span className="text-white font-semibold">3+ Years</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Location</span>
-                      <span className="text-white font-semibold">Malaysia</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Status</span>
-                      <span className="text-gray-100 font-semibold">Available</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-gray-300">Projects</span>
-                      <span className="text-white font-semibold">10+ Built</span>
-                    </div>
+                <motion.div 
+                  className="glass p-8 rounded-lg hover-lift w-full max-w-sm cursor-hover"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <h4 className="font-bold mb-6 text-2xl">
+                    <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">At a Glance</span>
+                  </h4>
+                  <div className="space-y-4">
+                    {[
+                      { label: 'Experience', value: '3+ Years' },
+                      { label: 'Location', value: 'Malaysia' },
+                      { label: 'Status', value: 'Available' },
+                      { label: 'Projects', value: '10+ Built' }
+                    ].map((stat, index) => (
+                      <motion.div 
+                        key={stat.label}
+                        className="flex items-center justify-between"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
+                      >
+                        <span className="text-white text-base">{stat.label}</span>
+                        <span className="text-white font-bold text-lg">{stat.value}</span>
+                      </motion.div>
+                    ))}
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* About Section - More compact */}
-      <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* About Section - With AnimatedSection */}
+      <AnimatedSection id="about" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="gradient-text">About Me</span>
+          <motion.div className="text-center mb-12" variants={itemVariants}>
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text">About Me</span>
             </h2>
-            <p className="text-xl text-gray-300">Passionate about creating innovative solutions</p>
-          </div>
+            <p className="text-2xl text-white">Passionate about creating innovative solutions</p>
+          </motion.div>
           
           {/* Main About Content */}
-          <div className="animate-slide-in-left mb-10">
-            <h3 className="text-2xl font-bold text-white mb-4">Hello! I'm <span className="text-gray-300">Hussain</span></h3>
-            <p className="text-gray-300 mb-4 leading-relaxed max-w-4xl">
-              I'm a passionate Full-Stack Developer based in <span className="text-white font-semibold">Kuala Lumpur, Malaysia</span>, 
+          <motion.div className="mb-10" variants={itemVariants}>
+            <h3 className="text-3xl font-bold text-white mb-6">Hello! I'm <span className="text-white">Hussain</span></h3>
+            <p className="text-white text-lg mb-6 leading-relaxed max-w-4xl">
+              I'm a passionate Full-Stack Developer based in <span className="text-white font-bold">Kuala Lumpur, Malaysia</span>, 
               with a strong background in building scalable web applications and backend systems. With experience across 
-              <span className="text-gray-100 font-semibold"> startups and established companies</span>, I've honed my skills in modern web technologies.
+              <span className="text-white font-bold"> startups and established companies</span>, I've honed my skills in modern web technologies.
             </p>
-            <p className="text-gray-300 mb-8 leading-relaxed max-w-4xl">
-              My journey includes working with companies like <span className="text-gray-100 font-semibold">LuxTag</span> and 
-              <span className="text-white font-semibold"> Horestco Industries</span>, where I've built APIs, optimized performance, 
+            <p className="text-white text-lg mb-8 leading-relaxed max-w-4xl">
+              My journey includes working with companies like <span className="text-white font-bold">LuxTag</span> and 
+              <span className="text-white font-bold"> Horestco Industries</span>, where I've built APIs, optimized performance, 
               managed servers, and created CI/CD pipelines.
             </p>
-          </div>
+          </motion.div>
 
-          {/* Cards Grid */}
+          {/* Cards Grid with Stagger Animation */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Education Card */}
-            <div className="glass p-6 rounded-xl hover-lift border border-white/10 animate-slide-in-up">
-              <h4 className="font-bold text-white mb-3 text-lg">🎓 Education</h4>
-              <p className="text-gray-300 text-sm mb-2">Diploma in Software Engineering</p>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift" delay={0}>
+              <h4 className="font-bold mb-4 text-2xl">
+                <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">Education</span>
+              </h4>
+              <p className="text-white text-lg mb-3 font-medium">Diploma in Software Engineering</p>
               <div className="flex items-center mb-2">
-                <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center mr-2 flex-shrink-0 p-1">
+                <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center mr-2 flex-shrink-0 p-1">
                   <Image 
                     src="/apu.jpeg" 
                     alt="Asia Pacific University Logo" 
-                    width={20} 
-                    height={20} 
+                    width={24} 
+                    height={24} 
                     className="object-contain rounded"
                   />
                 </div>
-                <p className="text-gray-400 text-sm">Asia Pacific University</p>
+                <p className="text-white text-base">Asia Pacific University</p>
               </div>
-              <p className="text-white text-sm font-semibold">GPA: 3.41/4.00</p>
-            </div>
+              <p className="text-white text-base font-bold">GPA: 3.41/4.00</p>
+            </AnimatedCard>
 
-            {/* Status Card */}
-            <div className="glass p-6 rounded-xl hover-lift border border-white/10 animate-slide-in-up animate-delay-200">
-              <h4 className="font-bold text-white mb-3 text-lg">💼 Availability</h4>
-              <p className="text-gray-100 text-sm font-semibold mb-2">Open to Remote Work</p>
-              <p className="text-gray-300 text-sm mb-2">Kuala Lumpur, Malaysia</p>
-              <p className="text-gray-300 text-sm">Available for new opportunities</p>
-            </div>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift" delay={0.1}>
+              <h4 className="font-bold mb-4 text-2xl">
+                <span className="text-transparent bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text">Availability</span>
+              </h4>
+              <p className="text-white text-lg font-bold mb-3">Open to Remote Work</p>
+              <p className="text-white text-base mb-3">Kuala Lumpur, Malaysia</p>
+              <p className="text-white text-base">Available for new opportunities</p>
+            </AnimatedCard>
 
-            {/* Experience Highlights */}
-            <div className="glass p-6 rounded-xl hover-lift border border-white/10 animate-slide-in-up animate-delay-400 md:col-span-2 lg:col-span-1">
-              <h4 className="font-bold text-white mb-3 text-lg">⚡ Experience</h4>
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                  <span className="text-gray-300 text-sm">3+ years professional</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                  <span className="text-gray-300 text-sm">Startup experience</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                  <span className="text-gray-300 text-sm">Full-stack expertise</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                  <span className="text-gray-300 text-sm">DevOps & CI/CD</span>
-                </div>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift md:col-span-2 lg:col-span-1" delay={0.2}>
+              <h4 className="font-bold mb-4 text-2xl">
+                <span className="text-transparent bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text">Experience</span>
+              </h4>
+              <div className="space-y-3">
+                {['3+ years professional', 'Startup experience', 'Full-stack expertise', 'DevOps & CI/CD'].map((item, index) => (
+                  <motion.div 
+                    key={item}
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="w-2 h-2 bg-white rounded-sm mr-3 flex-shrink-0"></span>
+                    <span className="text-white text-base">{item}</span>
+                  </motion.div>
+                ))}
               </div>
+            </AnimatedCard>
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Experience Section - Timeline Design */}
+      <AnimatedSection id="experience" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <motion.div className="text-center mb-16" variants={itemVariants}>
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text">Work Experience</span>
+            </h2>
+            <p className="text-2xl text-white">My professional journey</p>
+          </motion.div>
+          
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 opacity-30"></div>
+            
+            <div className="space-y-12">
+              {/* Morpheus Asia - Current */}
+              <AnimatedCard className="relative" delay={0}>
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-8 md:left-1/2 -ml-3 w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 border-4 border-black z-10"></div>
+                  
+                  {/* Content */}
+                  <div className="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-20">
+                    <div className="inline-block">
+                      <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-full text-sm font-bold">Current Position</span>
+                    </div>
+                    <p className="text-white text-base font-medium mt-3">June 2025 – Present</p>
+                    <p className="text-white text-sm mt-1 opacity-80">Remote</p>
+                  </div>
+                  
+                  <div className="md:w-1/2 md:pl-12 ml-20 md:ml-0">
+                    <div className="glass p-6 rounded-lg hover-lift">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                          <Image 
+                            src="/mor-asia-logo-2.png" 
+                            alt="Morpheus Asia Logo" 
+                            width={48} 
+                            height={48} 
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Community Lead</h3>
+                          <p className="text-white text-lg font-semibold">Morpheus Asia</p>
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base">
+                        <li className="flex items-start">
+                          <span className="text-purple-400 mr-3 flex-shrink-0">▸</span>
+                          Led growth of Morpheus ecosystem and community building in Asia
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-purple-400 mr-3 flex-shrink-0">▸</span>
+                          Worked on technical frontends that query the blockchain & smart contracts
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-purple-400 mr-3 flex-shrink-0">▸</span>
+                          Wrote user guides onboarding normies to complex staking mechanisms and the blockchain world
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
+
+              {/* LuxTag */}
+              <AnimatedCard className="relative" delay={0.1}>
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-8 md:left-1/2 -ml-3 w-6 h-6 rounded-full bg-white border-4 border-black z-10"></div>
+                  
+                  {/* Content - Reversed for alternating layout */}
+                  <div className="md:w-1/2 md:pr-12 md:text-right ml-20 md:ml-0">
+                    <div className="glass p-6 rounded-lg hover-lift md:hidden">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                          <Image 
+                            src="/luxtag.png.webp" 
+                            alt="LuxTag Logo" 
+                            width={48} 
+                            height={48} 
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Software Engineer</h3>
+                          <p className="text-white text-lg font-semibold">LuxTag</p>
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base">
+                        <li className="flex items-start">
+                          <span className="text-pink-400 mr-3 flex-shrink-0">▸</span>
+                          Created and maintained API documentation, improving developer onboarding speed
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-pink-400 mr-3 flex-shrink-0">▸</span>
+                          Built and optimized frontend interfaces and backend APIs, improving product performance
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    {/* Desktop version */}
+                    <div className="glass p-6 rounded-lg hover-lift hidden md:block">
+                      <div className="flex items-center gap-4 mb-4 justify-end">
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Software Engineer</h3>
+                          <p className="text-white text-lg font-semibold">LuxTag</p>
+                        </div>
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                          <Image 
+                            src="/luxtag.png.webp" 
+                            alt="LuxTag Logo" 
+                            width={48} 
+                            height={48} 
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base text-right">
+                        <li className="flex items-start justify-end">
+                          <span className="order-2 text-pink-400 ml-3 flex-shrink-0">◂</span>
+                          <span className="order-1">Created and maintained API documentation, improving developer onboarding speed</span>
+                        </li>
+                        <li className="flex items-start justify-end">
+                          <span className="order-2 text-pink-400 ml-3 flex-shrink-0">◂</span>
+                          <span className="order-1">Built and optimized frontend interfaces and backend APIs, improving product performance</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-1/2 md:pl-12 ml-20 md:ml-0">
+                    <p className="text-white text-base font-medium">March 2025 – June 2025</p>
+                    <p className="text-white text-sm mt-1 opacity-80">Remote</p>
+                  </div>
+                </div>
+              </AnimatedCard>
+
+              {/* Horestco */}
+              <AnimatedCard className="relative" delay={0.2}>
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
+                  <div className="absolute left-8 md:left-1/2 -ml-3 w-6 h-6 rounded-full bg-white border-4 border-black z-10"></div>
+                  
+                  <div className="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-20">
+                    <p className="text-white text-base font-medium">January 2024 – March 2025</p>
+                    <p className="text-white text-sm mt-1 opacity-80">Hybrid</p>
+                  </div>
+                  
+                  <div className="md:w-1/2 md:pl-12 ml-20 md:ml-0">
+                    <div className="glass p-6 rounded-lg hover-lift">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                          <Image 
+                            src="/horestco.png" 
+                            alt="Horestco Logo" 
+                            width={48} 
+                            height={48} 
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Fullstack Developer</h3>
+                          <p className="text-white text-lg font-semibold">Horestco Industries</p>
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base">
+                        <li className="flex items-start">
+                          <span className="text-blue-400 mr-3 flex-shrink-0">▸</span>
+                          Managed servers using CLI and built CI/CD pipelines, reducing deployment time
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-blue-400 mr-3 flex-shrink-0">▸</span>
+                          Automated routine tasks and integrated analytics tools for better visibility
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
+
+              {/* APU */}
+              <AnimatedCard className="relative" delay={0.3}>
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
+                  <div className="absolute left-8 md:left-1/2 -ml-3 w-6 h-6 rounded-full bg-white border-4 border-black z-10"></div>
+                  
+                  <div className="md:w-1/2 md:pr-12 md:text-right ml-20 md:ml-0">
+                    <div className="glass p-6 rounded-lg hover-lift md:hidden">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-1 flex-shrink-0">
+                          <Image 
+                            src="/apu.jpeg" 
+                            alt="Asia Pacific University Logo" 
+                            width={52} 
+                            height={52} 
+                            className="object-contain rounded-md"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Technical Assistant</h3>
+                          <p className="text-white text-lg font-semibold">Asia Pacific University</p>
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base">
+                        <li className="flex items-start">
+                          <span className="text-cyan-400 mr-3 flex-shrink-0">▸</span>
+                          Deployed software across hundreds of systems via Active Directory
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-cyan-400 mr-3 flex-shrink-0">▸</span>
+                          Standardized hardware configurations for consistent user experience
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div className="glass p-6 rounded-lg hover-lift hidden md:block">
+                      <div className="flex items-center gap-4 mb-4 justify-end">
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Technical Assistant</h3>
+                          <p className="text-white text-lg font-semibold">Asia Pacific University</p>
+                        </div>
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-1 flex-shrink-0">
+                          <Image 
+                            src="/apu.jpeg" 
+                            alt="Asia Pacific University Logo" 
+                            width={52} 
+                            height={52} 
+                            className="object-contain rounded-md"
+                          />
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base text-right">
+                        <li className="flex items-start justify-end">
+                          <span className="order-2 text-cyan-400 ml-3 flex-shrink-0">◂</span>
+                          <span className="order-1">Deployed software across hundreds of systems via Active Directory</span>
+                        </li>
+                        <li className="flex items-start justify-end">
+                          <span className="order-2 text-cyan-400 ml-3 flex-shrink-0">◂</span>
+                          <span className="order-1">Standardized hardware configurations for consistent user experience</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-1/2 md:pl-12 ml-20 md:ml-0">
+                    <p className="text-white text-base font-medium">August 2023 – December 2023</p>
+                    <p className="text-white text-sm mt-1 opacity-80">On-Site</p>
+                  </div>
+                </div>
+              </AnimatedCard>
+
+              {/* Upwork Freelance */}
+              <AnimatedCard className="relative" delay={0.4}>
+                <div className="flex flex-col md:flex-row md:items-start gap-8">
+                  <div className="absolute left-8 md:left-1/2 -ml-3 w-6 h-6 rounded-full bg-white border-4 border-black z-10"></div>
+                  
+                  <div className="md:w-1/2 md:pr-12 md:text-right md:ml-0 ml-20">
+                    <p className="text-white text-base font-medium">September 2022 – August 2023</p>
+                    <p className="text-white text-sm mt-1 opacity-80">Remote</p>
+                  </div>
+                  
+                  <div className="md:w-1/2 md:pl-12 ml-20 md:ml-0">
+                    <div className="glass p-6 rounded-lg hover-lift">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-2 flex-shrink-0">
+                          <Image 
+                            src="/upwork-logo.svg" 
+                            alt="Upwork Logo" 
+                            width={48} 
+                            height={48} 
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-bold text-white">Freelance Developer</h3>
+                          <p className="text-white text-lg font-semibold">Upwork</p>
+                        </div>
+                      </div>
+                      <ul className="space-y-3 text-white text-base">
+                        <li className="flex items-start">
+                          <span className="text-green-400 mr-3 flex-shrink-0">▸</span>
+                          Built fullstack apps, Discord bots, and web scraping tools
+                        </li>
+                        <li className="flex items-start">
+                          <span className="text-green-400 mr-3 flex-shrink-0">▸</span>
+                          Delivered MVPs and integrated payment systems for clients
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedCard>
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Experience Section - More compact */}
-      <section id="experience" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Projects Section - With Animated Cards */}
+      <AnimatedSection id="projects" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="gradient-text">Work Experience</span>
+          <motion.div className="text-center mb-12" variants={itemVariants}>
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text">Featured Projects</span>
             </h2>
-            <p className="text-xl text-gray-300">My professional journey</p>
-          </div>
-          <div className="space-y-6">
-            {/* LuxTag */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left border border-white/20">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div className="flex items-center">
-                  {/* Company Icon */}
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
-                    <Image 
-                      src="/luxtag.png.webp" 
-                      alt="LuxTag Logo" 
-                      width={32} 
-                      height={32} 
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Software Engineer</h3>
-                    <p className="text-gray-200 font-semibold">LuxTag - Startup</p>
-                  </div>
-                </div>
-                <div className="text-gray-300 mt-2 md:mt-0">
-                  <span className="bg-gradient-to-r from-white to-white text-black px-3 py-1 rounded-full text-xs mr-2 font-semibold">Current</span>
-                  <span className="text-gray-400 text-sm">March 2025 – Present • Remote</span>
-                </div>
-              </div>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Created and maintained API documentation, improving developer onboarding and speed
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Built and optimized frontend interfaces and backend APIs, improving overall product performance and user experience
-                </li>
-              </ul>
-            </div>
-
-            {/* Horestco */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-200 border border-white/15">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div className="flex items-center">
-                  {/* Company Icon */}
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
-                    <Image 
-                      src="/horestco.png" 
-                      alt="Horestco Logo" 
-                      width={32} 
-                      height={32} 
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Fullstack Developer</h3>
-                    <p className="text-gray-200 font-semibold">Horestco Industries</p>
-                  </div>
-                </div>
-                <div className="text-gray-300 mt-2 md:mt-0">
-                  <span className="text-gray-400 text-sm">January 2024 – March 2025 • Hybrid</span>
-                </div>
-              </div>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Managed servers using CLI (MySQL, Apache, SSH) and built CI/CD pipelines, reducing deployment time and manual errors
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Automated routine tasks, integrated analytics tools, and performed SEO research, leading to better visibility and streamlined workflows
-                </li>
-              </ul>
-            </div>
-
-            {/* APU */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left animate-delay-400 border border-white/15">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div className="flex items-center">
-                  {/* Company Icon */}
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-1">
-                    <Image 
-                      src="/apu.jpeg" 
-                      alt="Asia Pacific University Logo" 
-                      width={40} 
-                      height={40} 
-                      className="object-contain rounded-lg"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Technical Assistant</h3>
-                    <p className="text-gray-200 font-semibold">Asia Pacific University</p>
-                  </div>
-                </div>
-                <div className="text-gray-300 mt-2 md:mt-0">
-                  <span className="text-gray-400 text-sm">August 2023 – December 2023 • On-Site</span>
-                </div>
-              </div>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Updated and deployed software across hundreds of systems via Microsoft Active Directory, ensuring consistency and security
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Standardized hardware configurations, resulting in a uniform and reliable user experience across the university
-                </li>
-              </ul>
-            </div>
-
-            {/* Freelance */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-500 border border-white/15">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                <div className="flex items-center">
-                  {/* Company Icon */}
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 p-2">
-                    <Image 
-                      src="/upwork-logo.svg" 
-                      alt="Upwork Logo" 
-                      width={32} 
-                      height={32} 
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Freelance Fullstack Developer</h3>
-                    <p className="text-gray-200 font-semibold">Upwork</p>
-                  </div>
-                </div>
-                <div className="text-gray-300 mt-2 md:mt-0">
-                  <span className="text-gray-400 text-sm">September 2022 – August 2023 • Remote</span>
-                </div>
-              </div>
-              <ul className="space-y-2 text-gray-300 text-sm">
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Built fullstack apps, Discord bots, web scraping tools, and handled website migrations
-                </li>
-                <li className="flex items-start">
-                  <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mt-2 mr-3 flex-shrink-0 animate-pulse-slow"></span>
-                  Delivered MVPs and integrated payment systems for solo clients and small businesses
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section - More compact */}
-      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="gradient-text">Featured Projects</span>
-            </h2>
-            <p className="text-xl text-gray-300">Some of my recent work</p>
-          </div>
+            <a 
+              href="https://github.com/nothussainrana" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-2xl text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text hover:from-purple-300 hover:via-pink-300 hover:to-blue-300 transition-all duration-300 inline-flex items-center gap-2 group"
+            >
+              View All
+              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </a>
+          </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Morpheus.asia */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-scale-in border border-white/15 group">
-              <div className="flex items-center mb-4">
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift group cursor-hover" delay={0}>
+              <div className="flex items-center mb-6">
                 {/* Project Icon */}
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-2">
+                <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-2">
                   <Image 
                     src="/mor-asia-logo-2.png" 
                     alt="Morpheus.asia Logo" 
-                    width={32} 
-                    height={32} 
+                    width={48} 
+                    height={48} 
                     className="object-contain"
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">Morpheus.asia</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Morpheus.asia</h3>
                   <a 
                     href="https://morpheus.asia" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors font-medium text-sm"
+                    className="text-white hover:text-gray-300 transition-colors font-medium text-base cursor-hover"
                   >
                     morpheus.asia ↗
                   </a>
                 </div>
               </div>
-              <p className="text-gray-300 mb-3 leading-relaxed text-sm">
-                Built a custom blog system and metrics dashboard using <span className="text-white font-semibold">Next.js fullstack capabilities</span> (API routes + frontend), displaying real-time site data.
+              <p className="text-white mb-4 leading-relaxed text-base">
+                Built a custom blog system and metrics dashboard using <span className="text-white font-bold">Next.js fullstack capabilities</span> (API routes + frontend), displaying real-time site data.
               </p>
-              <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                Collaborated in a dev team using <span className="text-gray-100 font-semibold">Git, PRs, and code reviews</span> to ship features fast and cleanly.
+              <p className="text-white mb-6 leading-relaxed text-base">
+                Collaborated in a dev team using <span className="text-white font-bold">Git, PRs, and code reviews</span> to ship features fast and cleanly.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">React</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">TypeScript</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">Next.js</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">React</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">TypeScript</span>
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Dashtly */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-scale-in animate-delay-200 border border-white/15 group">
-              <div className="flex items-center mb-4">
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift group cursor-hover" delay={0.1}>
+              <div className="flex items-center mb-6">
                 {/* Project Icon */}
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-1">
+                <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300 p-1">
                   <Image 
                     src="/dashtly.jpg" 
                     alt="Dashtly Logo" 
-                    width={40} 
-                    height={40} 
-                    className="object-contain rounded-lg"
+                    width={56} 
+                    height={56} 
+                    className="object-contain rounded-md"
                   />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">Dashtly</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Dashtly</h3>
                   <a 
                     href="https://dashtly.com" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-white transition-colors font-medium text-sm"
+                    className="text-white hover:text-gray-300 transition-colors font-medium text-base cursor-hover"
                   >
                     dashtly.com ↗
                   </a>
                 </div>
               </div>
-              <p className="text-gray-300 mb-3 leading-relaxed text-sm">
-                Built a full <span className="text-white font-semibold">P2P marketplace</span> with Next.js, Prisma, PostgreSQL, 
+              <p className="text-white mb-4 leading-relaxed text-base">
+                Built a full <span className="text-white font-bold">P2P marketplace</span> with Next.js, Prisma, PostgreSQL, 
                 and custom auth (signup/login, forgot password, email via SMTP).
               </p>
-              <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                Deployed on <span className="text-gray-100 font-semibold">DigitalOcean</span> with an S3 bucket, 
+              <p className="text-white mb-6 leading-relaxed text-base">
+                Deployed on <span className="text-white font-bold">DigitalOcean</span> with an S3 bucket, 
                 DB management, and UX for the Tajik market.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Next.js</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Prisma</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">PostgreSQL</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">DigitalOcean</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">Next.js</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">Prisma</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">PostgreSQL</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">DigitalOcean</span>
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* phpSite */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-scale-in animate-delay-400 border border-white/15 group">
-              <div className="flex items-center mb-4">
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift group cursor-hover" delay={0.2}>
+              <div className="flex items-center mb-6">
                 {/* Project Icon Placeholder - No logo available */}
-                <div className="w-12 h-12 bg-gradient-to-r from-white to-white rounded-xl flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl text-black font-bold">P</span>
+                <div className="w-16 h-16 bg-white rounded-md flex items-center justify-center mr-4 flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl text-black font-bold">P</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-1">phpSite</h3>
-                  <span className="text-gray-400 font-medium text-sm">Custom MVC Framework</span>
+                  <h3 className="text-2xl font-bold text-white mb-2">phpSite</h3>
+                  <span className="text-white font-medium text-base">Custom MVC Framework</span>
                 </div>
               </div>
-              <p className="text-gray-300 mb-3 leading-relaxed text-sm">
-                Designed a custom <span className="text-white font-semibold">MVC structure</span> and mimicked Laravel's 
+              <p className="text-white mb-4 leading-relaxed text-base">
+                Designed a custom <span className="text-white font-bold">MVC structure</span> and mimicked Laravel's 
                 request lifecycle without relying on external libraries.
               </p>
-              <p className="text-gray-300 mb-4 leading-relaxed text-sm">
-                Built lightweight alternatives to <span className="text-gray-100 font-semibold">Laravel features</span> like 
+              <p className="text-white mb-6 leading-relaxed text-base">
+                Built lightweight alternatives to <span className="text-white font-bold">Laravel features</span> like 
                 middleware and simple ORM, leveling up backend fundamentals.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">PHP</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">MVC</span>
-                <span className="bg-gradient-to-r from-white to-white text-black px-2 py-1 rounded-full text-xs font-semibold">Custom Framework</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">PHP</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">MVC</span>
+                <span className="bg-white text-black px-3 py-1.5 rounded-md text-sm font-bold">Custom Framework</span>
               </div>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Skills Section - More compact */}
-      <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Skills Section - With AnimatedSection */}
+      <AnimatedSection id="skills" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="gradient-text">Technical Skills</span>
+          <motion.div className="text-center mb-12" variants={itemVariants}>
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text">Skills</span>
             </h2>
-            <p className="text-xl text-gray-300">Technologies I work with</p>
-          </div>
+            <p className="text-2xl text-white">Technologies I work with</p>
+          </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Languages */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left border border-white/15">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">💻</span>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift cursor-hover" delay={0}>
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Languages
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {['JavaScript', 'TypeScript', 'Python', 'PHP', 'HTML', 'CSS', 'Bash', 'SQL'].map((skill, index) => (
-                  <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                    <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
-                  </div>
+                  <motion.div 
+                    key={skill} 
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="w-2 h-2 bg-white rounded-sm mr-4"></span>
+                    <span className="text-white hover:text-gray-300 transition-colors text-base font-medium">{skill}</span>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Frameworks */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-left animate-delay-200 border border-white/15">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">⚛️</span>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift cursor-hover" delay={0.1}>
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Frameworks & Libraries
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {['Node.js', 'Express', 'React', 'Next.js', 'Tailwind CSS', 'MedusaJS', 'Laravel', 'Ethers.js', 'Prisma ORM'].map((skill, index) => (
-                  <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                    <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
-                  </div>
+                  <motion.div 
+                    key={skill} 
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="w-2 h-2 bg-white rounded-sm mr-4"></span>
+                    <span className="text-white hover:text-gray-300 transition-colors text-base font-medium">{skill}</span>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Databases & Tools */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right animate-delay-200 border border-white/15">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">🛠️</span>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift cursor-hover" delay={0.2}>
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Databases & Tools
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {['MySQL', 'PostgreSQL', 'Redis', 'Docker', 'Linux', 'Nginx', 'Git', 'Puppeteer'].map((skill, index) => (
-                  <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                    <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
-                  </div>
+                  <motion.div 
+                    key={skill} 
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="w-2 h-2 bg-white rounded-sm mr-4"></span>
+                    <span className="text-white hover:text-gray-300 transition-colors text-base font-medium">{skill}</span>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </AnimatedCard>
 
             {/* Cloud & DevOps */}
-            <div className="glass p-6 rounded-2xl hover-lift animate-slide-in-right border border-white/15">
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">☁️</span>
+            <AnimatedCard className="glass p-8 rounded-lg hover-lift cursor-hover" delay={0.3}>
+              <h3 className="text-2xl font-bold text-white mb-6">
                 Cloud & DevOps
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {['DigitalOcean', 'AWS (EC2, S3)', 'Cloudflare', 'GitHub Actions', 'CI/CD', 'Vercel', 'Firebase', 'SMTP', 'Stripe'].map((skill, index) => (
-                  <div key={skill} className={`flex items-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-                    <span className="w-2 h-2 bg-gradient-to-r from-white to-white rounded-full mr-3 animate-pulse-slow"></span>
-                    <span className="text-gray-300 hover:text-white transition-colors text-sm">{skill}</span>
-                  </div>
+                  <motion.div 
+                    key={skill} 
+                    className="flex items-center"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <span className="w-2 h-2 bg-white rounded-full mr-4 animate-pulse-slow"></span>
+                    <span className="text-white hover:text-gray-300 transition-colors text-base font-medium">{skill}</span>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      {/* Contact Section - More compact */}
-      <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* Contact Section - With AnimatedSection */}
+      <AnimatedSection id="contact" className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="gradient-text">Let's Work Together</span>
+          <motion.div className="text-center mb-12" variants={itemVariants}>
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text">Let's Work Together</span>
             </h2>
-            <p className="text-xl text-gray-300">Ready to bring your ideas to life</p>
-          </div>
+            <p className="text-2xl text-white">Ready to bring your ideas to life</p>
+          </motion.div>
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="animate-slide-in-left">
-              <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm always open to discussing <span className="text-white font-semibold">new opportunities</span>, 
-                <span className="text-gray-100 font-semibold"> interesting projects</span>, or just having a chat about technology. 
+            <motion.div variants={itemVariants}>
+              <h3 className="text-3xl font-bold mb-8">
+                <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">Get In Touch</span>
+              </h3>
+              <p className="text-white text-lg mb-8 leading-relaxed">
+                I'm always open to discussing <span className="text-white font-bold">new opportunities</span>, 
+                <span className="text-white font-bold"> interesting projects</span>, or just having a chat about technology. 
                 Feel free to reach out!
               </p>
-              <div className="space-y-4">
-                <div className="flex items-center group">
-                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 hover-glow border border-white/10">
-                    <span className="text-2xl">📧</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Email</p>
-                    <a href="mailto:nothussainrana@icloud.com" className="text-gray-300 hover:text-white transition-colors font-medium text-sm">
-                      nothussainrana@icloud.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center group">
-                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 hover-glow border border-white/10">
-                    <span className="text-2xl">📱</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Phone</p>
-                    <a href="tel:+60108326134" className="text-gray-300 hover:text-white transition-colors font-medium text-sm">
-                      +60 10 832 6134
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center group">
-                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 hover-glow border border-white/10">
-                    <span className="text-2xl">📍</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white">Location</p>
-                    <p className="text-gray-300 font-medium text-sm">Kuala Lumpur, Malaysia</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="animate-slide-in-right">
-              <div className="glass p-6 rounded-2xl hover-lift border border-white/10">
-                <h4 className="font-bold text-white mb-6 text-lg">Connect with me</h4>
-                <div className="space-y-4">
-                  <a 
-                    href="https://linkedin.com/in/nothussainrana" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group flex items-center p-4 glass rounded-xl hover:scale-105 transition-all duration-300 hover-glow border border-white/10"
+              <div className="space-y-5">
+                {[
+                  { label: 'Email', value: 'nothussainrana@icloud.com', href: 'mailto:nothussainrana@icloud.com' },
+                  { label: 'Phone', value: '+60 10 832 6134', href: 'tel:+60108326134' },
+                  { label: 'Location', value: 'Kuala Lumpur, Malaysia', href: null }
+                ].map((contact, index) => (
+                  <motion.div 
+                    key={contact.label}
+                    className="flex items-center group cursor-hover"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    whileHover={{ x: 10 }}
                   >
-                    <div className="w-10 h-10 bg-gradient-to-r from-white to-white rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-14 h-14 glass rounded-md flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300 hover-glow">
+                      <span className="w-3 h-3 bg-white rounded-sm"></span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-base mb-1">{contact.label}</p>
+                      {contact.href ? (
+                        <a href={contact.href} className="text-white hover:text-gray-300 transition-colors font-medium text-base">
+                          {contact.value}
+                        </a>
+                      ) : (
+                        <p className="text-white font-medium text-base">{contact.value}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <div className="glass p-8 rounded-lg hover-lift cursor-hover">
+                <h4 className="font-bold mb-8 text-2xl">
+                  <span className="text-transparent bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text">Connect with me</span>
+                </h4>
+                <div className="space-y-5">
+                  <MagneticButton 
+                    href="https://linkedin.com/in/nothussainrana"
+                    className="group flex items-center p-6 glass rounded-xl transition-all duration-300 hover-glow w-full"
+                  >
+                    <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-7 h-7 text-black" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white group-hover:text-gray-300 transition-colors">LinkedIn</p>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm">Professional Network</p>
+                      <p className="font-bold text-white group-hover:text-gray-300 transition-colors text-lg">LinkedIn</p>
+                      <p className="text-white group-hover:text-gray-300 transition-colors text-base">Professional Network</p>
                     </div>
-                  </a>
-                  <a 
-                    href="https://github.com/nothussainrana" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group flex items-center p-4 glass rounded-xl hover:scale-105 transition-all duration-300 hover-glow border border-white/10"
+                  </MagneticButton>
+                  <MagneticButton 
+                    href="https://github.com/nothussainrana"
+                    className="group flex items-center p-6 glass rounded-xl transition-all duration-300 hover-glow w-full"
                   >
-                    <div className="w-10 h-10 bg-gradient-to-r from-black to-black rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-14 h-14 bg-black rounded-xl flex items-center justify-center mr-5 group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-white group-hover:text-gray-300 transition-colors">GitHub</p>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm">Code Repository</p>
+                      <p className="font-bold text-white group-hover:text-gray-300 transition-colors text-lg">GitHub</p>
+                      <p className="text-white group-hover:text-gray-300 transition-colors text-base">Code Repository</p>
                     </div>
-                  </a>
+                  </MagneticButton>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   );
 }
