@@ -202,15 +202,15 @@ a, button, .cursor-hover {
   animation: rotate 10s linear infinite;
 }
 
-/* Glassmorphism Effect - Pure black with no borders */
+/* Glassmorphism Effect - Transparent with blur */
 .glass {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(20px);
   border: none;
 }
 
 .glass-light {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   border: none;
 }
